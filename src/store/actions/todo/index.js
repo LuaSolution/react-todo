@@ -30,10 +30,12 @@ export const updateStatusFilter = status => ({
   payload: { status },
 })
 
-export const updateDateFilter = ({ key, value }) => ({
-  type: Types.UPDATE_TODO_DATE_FILTER,
-  payload: {
-    key,
-    value,
-  },
-})
+export const updateDateFilter = ({ key, value = 'All' }) =>{
+  return {
+    type: Types.UPDATE_TODO_DATE_FILTER,
+    payload: {
+      key,
+      value,
+    },
+  }
+}

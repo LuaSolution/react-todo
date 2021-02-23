@@ -37,7 +37,7 @@ const TodoForm = ({ addNewTodo }) => {
     if (isUserChange) setDate(newDate)
   }
 
-  const canSave = date && values.description && values.location && values.icon
+  const canSave = date && values.description && values.location
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -73,14 +73,14 @@ const TodoForm = ({ addNewTodo }) => {
           isAllDay={values.isAllDay}
           onSelect={handleDateChange}
         />
-        <div className={styles.allDay}>
+        {/* <div className={styles.allDay}>
           <Switch
             label="All day"
             checked={values.isAllDay}
             name="isAllDay"
             onChange={handleChange}
           />
-        </div>
+        </div> */}
       </div>
       <span className={styles.hint}>* Required fields</span>
       <Button
@@ -91,7 +91,7 @@ const TodoForm = ({ addNewTodo }) => {
         type="submit"
         disabled={!canSave}
       >
-        ADD TASK
+        Thêm công việc
       </Button>
     </form>
   )

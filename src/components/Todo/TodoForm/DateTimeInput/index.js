@@ -6,8 +6,10 @@ import PropTypes from 'prop-types'
 
 const DateTimeInput = ({ date, isAllDay, onSelect }) => {
   const minDateTime = new Date()
-  const formatDate = value =>
-    format(value, `MM/DD/YYYY${isAllDay ? '' : ' hh:mm a'}`)
+  // const formatDate = value =>
+  //   format(value, `MM/DD/YYYY${isAllDay ? '' : ' hh:mm'}`)
+    const formatDate = value =>
+    format(value, `DD/MM/YYYY`)
   const timePrecision = isAllDay ? undefined : TimePrecision.MINUTE
 
   return (
@@ -20,7 +22,7 @@ const DateTimeInput = ({ date, isAllDay, onSelect }) => {
         inputProps={{ readOnly: true }}
         formatDate={formatDate}
         parseDate={str => new Date(str)}
-        timePrecision={timePrecision}
+        // timePrecision={timePrecision}
         timePickerProps={{ useAmPm: true }}
         popoverProps={{ position: Position.TOP }}
         onChange={onSelect}

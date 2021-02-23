@@ -59,15 +59,16 @@ const reducer = {
     },
   }),
   [Actions.UPDATE_TODO_DATE_FILTER]: (state, payload) => ({
-    ...state,
-    filters: {
-      ...state.filters,
-      date: {
-        key: payload.key,
-        value: payload.value,
-      },
-    },
-  }),
+        ...state,
+        all: payload.value === 'All',
+        filters: {
+          ...state.filters,
+          date: {
+            key: payload.key,
+            value: payload.value,
+          },
+        }
+      }),
   [Actions.UPDATE_TODO_STATUS_FILTER]: (state, payload) => ({
     ...state,
     filters: {

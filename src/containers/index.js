@@ -1,21 +1,14 @@
 import React from 'react'
+import './App.scss'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { ContentLayout, Overlay } from 'components/layout'
+import { ContentLayoutSingle } from 'components/layout'
 import { TodoAdd, Summary } from 'components/Todo'
 import { rootSelector, todosSummarySelector } from 'store/selectors'
 import toggleView from 'store/actions/root'
-import TodosAll from './MyDay'
-import TodosNew from './New'
-
-const mapStateToProps = state => ({
-  ...rootSelector(state),
-  ...todosSummarySelector(state),
-})
-
-const mapDispatchToProps = dispatch => ({
-  changeView: () => dispatch(toggleView()),
-})
+import TodosAll from './Todo/MyDay'
+import TodosNew from './Todo/New'
 
 const Todos = props => {
   const { viewAll, pendingTodos, changeView } = props
@@ -29,12 +22,15 @@ const Todos = props => {
   )
 
   return (
+    // <ContentLayoutSingle
+    //   right={<TodosAll />}
+    // />
     <ContentLayout
-      activeRight={!viewAll}
-      left={<TodosNew />}
-      right={<TodosAll />}
-      overlay={overlay}
-    />
+    activeRight={!viewAll}
+    left={<TodosNew />}
+    right={<TodosAll />}
+    overlay={overlay}
+  />
   )
 }
 
@@ -48,6 +44,15 @@ Todos.defaultProps = {
   viewAll: false,
   pendingTodos: [],
 }
+
+const mapStateToProps = state => ({
+  ...rootSelector(state),
+  ...todosSummarySelector(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+  changeView: () => dispatch(toggleView()),
+})
 
 export default connect(
   mapStateToProps,

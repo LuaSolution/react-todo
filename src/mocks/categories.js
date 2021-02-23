@@ -1,8 +1,6 @@
 const Categories = {
   1: 'Business',
-  2: 'Personal',
-  3: 'Family',
-  4: 'Work'
+  2: 'Personal'
 }
 
 export default Categories

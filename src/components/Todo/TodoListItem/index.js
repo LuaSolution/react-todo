@@ -23,7 +23,7 @@ const Todo = ({ todo, onToggle, onDelete }) => {
       </div>
       <div className={styles.details}>
         <span className={styles.date}>
-          {todo.isAllDay ? 'All day' : format(todo.date, 'ha')}
+  {console.log(format(todo.date, 'ha'))}
         </span>
         <div className={styles.actions}>
           <ButtonGroup minimal>

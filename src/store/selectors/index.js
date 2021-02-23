@@ -5,8 +5,9 @@ export const todosListSelector = createSelector(
   state => state.todos.todos,
   state => state.todos.filters.date,
   state => state.todos.filters.status,
-  (todos, dateFilter, statusFilter) => {
-    const todosByDate = todos.filter(todo =>
+  state => state.todos.all,
+  (todos, dateFilter, statusFilter, displayAll) => {
+    const todosByDate = displayAll ? todos : todos.filter(todo =>
       isSameDay(todo.date, dateFilter.value),
     )
     const totalPendingTodos = todosByDate.filter(todo => !todo.done).length

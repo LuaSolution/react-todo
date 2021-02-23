@@ -18,6 +18,7 @@ const getFilters = (obj, onSelect) =>
   ))
 
 const getStats = list => ({
+  totalAll: list.length,
   totalToday: list.filter(todo => isToday(todo.date)).length,
   thisWeek: groupByDate(
     list,
@@ -30,9 +31,10 @@ const getStats = list => ({
 
 const DateSelector = props => {
   const { todos } = props
-  const { totalToday, thisWeek, upcoming } = getStats(todos)
+  const { totalToday, totalAll, thisWeek, upcoming } = getStats(todos)
   const { onSelect } = props
 
+  const handleAllFilter = () => onSelect({ key: 'All' })
   const handleTodayFilter = () => onSelect({ key: 'Today', value: new Date() })
   const handleOtherFilter = e => {
     const [firstTodo] = thisWeek[e.target.name] || upcoming[e.target.name]
@@ -44,6 +46,7 @@ const DateSelector = props => {
 
   return (
     <Menu className={styles.root}>
+      <MenuItem text='All' label={totalAll} onClick={handleAllFilter} />
       <MenuItem text='Today' label={totalToday} onClick={handleTodayFilter} />
       {getFilters(thisWeek, handleOtherFilter)}
       <MenuDivider title='Upcoming' />

@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import styles from './index.module.scss'
 import TodoListItem from '../TodoListItem'
 
 const TodoList = ({ todos, onScroll, toggleTodoStatus, deleteTodo }) => {
+  useEffect(() => {
+    console.log(todos)
+  }, []);
+  
   return (
     <div className={styles.list} onScroll={onScroll}>
       <TransitionGroup>
